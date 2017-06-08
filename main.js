@@ -13,15 +13,15 @@ var total = sports.push('football', 'swimming');
 var strings = ['this','is','a','collection','of','words'];
 // A:
 function longestString(array) {
-  var bigWord = 0;
+  var longestWord = array[0];
   for (var i = 0; i < array.length; i++) {
-  if (array.length > bigWord) {
-    bigWord = array.length;
+  if (longestWord.length < array[i].length) {
+    longestWord = array[i];
 
   }
 
   }
-  return bigWord;
+  return longestWord;
 }
 
 
@@ -40,7 +40,7 @@ var numbers = [1,12,4,18,9,7,11,3,101,5,6];
 function smallestNumber(array) {
 var littleNumber = Infinity;
 for (var i = 0; i < array.length; i++) {
-  if (array[i] < Infinity) {
+  if (array[i] < littleNumber) {
     littleNumber = array[i];
   }
 }
@@ -55,13 +55,13 @@ console.assert(smallestNumber(numbers) === 1, {"message": "smallestNumber should
 // Write a function `getEvens()` that accepts an array
 // and returns only the even numbers in the array.
 // A:
-var newArray = [];
-function getEvens(array) {
-  for (var i = 0; i < array.length; i++) {
-    var number = array[i];
 
-    if (number % 2 === 0) {
-      newArray.push(number);
+function getEvens(array) {
+  var newArray = [];
+  for (var i = 0; i < array.length; i++) {
+
+    if (array[i] % 2 === 0) {
+      newArray.push(array[i]);
 
     }
   }
@@ -77,7 +77,14 @@ console.assert(getEvens(numbers).toString() === '12,4,18,6', {'message': 'getEve
 // Hint: When looping over the array, start at the last index
 // and decrement the iterator to zero
 // A:
+var arrayReverser = function(array) {
+  var reverseArray = [];
+  for (var i = array.length - 1; i >= 0; i--) {
+    reverseArray.push(array[i]);
+  }
 
+  return reverseArray;
+}
 
 console.assert(arrayReverser(numbers).toString() === '6,5,101,3,11,7,9,18,4,12,1', {'message': 'arrayReverser should return "6,5,101,3,11,7,9,18,4,12,1"'});
 
@@ -86,7 +93,13 @@ console.assert(arrayReverser(numbers).toString() === '6,5,101,3,11,7,9,18,4,12,1
 // Write a function that accepts an array argument
 // and returns the sum of all of the numbers in the array
 // A:
-
+var sumArrayOfNumbers = function(array) {
+  var sum = 0;
+  for (var i = 0; i < array.length; i++) {
+    sum = sum + array[i];
+  }
+  return sum;
+}
 
 console.assert(sumArrayOfNumbers(numbers) === 177, {'message': 'sumArrayOfNumbers should return 177'});
 
@@ -95,6 +108,16 @@ console.assert(sumArrayOfNumbers(numbers) === 177, {'message': 'sumArrayOfNumber
 // Write a function that accepts an array argument
 // and returns an array of only the numbers greater than 10
 // A:
+var numbersOver10 = function(array) {
+  resultArray = []
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] > 10) {
+      resultArray.push(array[i]);
+    }
+  }
+
+  return resultArray;
+}
 
 
 console.assert(numbersOver10(numbers).toString() === "12,18,11,101", {'message': 'numbersOver10 should return "12,18,11,101"'});
@@ -104,6 +127,16 @@ console.assert(numbersOver10(numbers).toString() === "12,18,11,101", {'message':
 // Write a function that accepts both an array and number argument
 // and returns an array of only the numbers greater than the number passed to the function
 // A:
+var numbersOverX = function(array, number) {
+  var biggerNumbers = [];
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] > number) {
+      biggerNumbers.push(array[i]);
+    }
+  }
+
+  return biggerNumbers;
+}
 
 
 console.assert(numbersOverX(numbers, 15).toString() === "18,101", {'message': 'numbersOverX should return "18,101"'});
@@ -115,7 +148,15 @@ console.assert(numbersOverX(numbers, 15).toString() === "18,101", {'message': 'n
 var numbers = [1,12,4,18,9,7,11,3,101,5,6];
 var numbersTwo = [33,56,72,2,5,66,90,21,42];
 // A:
-
+let joinArrays = function(arr) {
+  var res = [];
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = 0; j < arr[i].length; j++) {
+      res.push(arr[i][j])
+    }
+  }
+  return res;
+}
 
 console.assert(joinArrays([numbers, numbersTwo]).toString() === '1,12,4,18,9,7,11,3,101,5,6,33,56,72,2,5,66,90,21,42', {'message': 'joinArrays should return "1,12,4,18,9,7,11,3,101,5,6,33,56,72,2,5,66,90,21,42"'});
 
